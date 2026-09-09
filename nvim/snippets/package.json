@@ -5,6 +5,10 @@
       {
         "language": "markdown",
         "path": "./markdown.json"
+      },
+      {
+        "language": "lc3",
+        "path": "./lc3.json"
       }
     ]
   }

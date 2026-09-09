@@ -1,0 +1,368 @@
+{
+  "ADD register": {
+    "prefix": [
+      "ADD",
+      "add"
+    ],
+    "body": "ADD ${1:R0}, ${2:R1}, ${3:R2}",
+    "description": "ADD DR, SR1, SR2. Add two registers; store in DR. Updates condition codes."
+  },
+  "ADD immediate": {
+    "prefix": [
+      "ADD",
+      "add"
+    ],
+    "body": "ADD ${1:R0}, ${2:R1}, ${3:#1}",
+    "description": "ADD DR, SR1, imm5. Add SR1 and a signed immediate from -16 to 15; store in DR. Updates condition codes."
+  },
+  "AND register": {
+    "prefix": [
+      "AND",
+      "and"
+    ],
+    "body": "AND ${1:R0}, ${2:R1}, ${3:R2}",
+    "description": "AND DR, SR1, SR2. Bitwise AND two registers; store in DR. Updates condition codes."
+  },
+  "AND immediate": {
+    "prefix": [
+      "AND",
+      "and"
+    ],
+    "body": "AND ${1:R0}, ${2:R1}, ${3:#1}",
+    "description": "AND DR, SR1, imm5. Bitwise AND SR1 and a signed immediate from -16 to 15; store in DR. Updates condition codes."
+  },
+  "NOT": {
+    "prefix": [
+      "NOT",
+      "not"
+    ],
+    "body": "NOT ${1:R0}, ${2:R1}",
+    "description": "NOT DR, SR. Bitwise complement of SR into DR; updates condition codes."
+  },
+  "LD": {
+    "prefix": [
+      "LD",
+      "ld"
+    ],
+    "body": "LD ${1:R0}, ${2:LABEL}",
+    "description": "LD DR, LABEL. Load memory at label into DR. Label must be within -256 to 255 words of the next instruction."
+  },
+  "LDI": {
+    "prefix": [
+      "LDI",
+      "ldi"
+    ],
+    "body": "LDI ${1:R0}, ${2:LABEL}",
+    "description": "LDI DR, LABEL. Load through the address stored at label into DR. Label must be within -256 to 255 words of the next instruction."
+  },
+  "LEA": {
+    "prefix": [
+      "LEA",
+      "lea"
+    ],
+    "body": "LEA ${1:R0}, ${2:LABEL}",
+    "description": "LEA DR, LABEL. Load the address of label into DR. Label must be within -256 to 255 words of the next instruction."
+  },
+  "ST": {
+    "prefix": [
+      "ST",
+      "st"
+    ],
+    "body": "ST ${1:R0}, ${2:LABEL}",
+    "description": "ST SR, LABEL. Store SR at label. PC-relative offset is -256 to 255."
+  },
+  "STI": {
+    "prefix": [
+      "STI",
+      "sti"
+    ],
+    "body": "STI ${1:R0}, ${2:LABEL}",
+    "description": "STI SR, LABEL. Store SR through the address at label. PC-relative offset is -256 to 255."
+  },
+  "LDR": {
+    "prefix": [
+      "LDR",
+      "ldr"
+    ],
+    "body": "LDR ${1:R0}, ${2:R1}, ${3:#0}",
+    "description": "LDR DR, BaseR, offset6. Load into DR at BaseR + offset6. Offset range: -32 to 31."
+  },
+  "STR": {
+    "prefix": [
+      "STR",
+      "str"
+    ],
+    "body": "STR ${1:R0}, ${2:R1}, ${3:#0}",
+    "description": "STR SR, BaseR, offset6. Store SR at BaseR + offset6. Offset range: -32 to 31."
+  },
+  "BR": {
+    "prefix": [
+      "BR",
+      "br"
+    ],
+    "body": "BR ${1:LABEL}",
+    "description": "Branch to LABEL when any condition code is set. PC-relative range: -256 to 255 words."
+  },
+  "BRn": {
+    "prefix": [
+      "BRn",
+      "brn"
+    ],
+    "body": "BRn ${1:LABEL}",
+    "description": "Branch to LABEL when negative. PC-relative range: -256 to 255 words."
+  },
+  "BRz": {
+    "prefix": [
+      "BRz",
+      "brz"
+    ],
+    "body": "BRz ${1:LABEL}",
+    "description": "Branch to LABEL when zero. PC-relative range: -256 to 255 words."
+  },
+  "BRp": {
+    "prefix": [
+      "BRp",
+      "brp"
+    ],
+    "body": "BRp ${1:LABEL}",
+    "description": "Branch to LABEL when positive. PC-relative range: -256 to 255 words."
+  },
+  "BRnz": {
+    "prefix": [
+      "BRnz",
+      "brnz"
+    ],
+    "body": "BRnz ${1:LABEL}",
+    "description": "Branch to LABEL when negative or zero. PC-relative range: -256 to 255 words."
+  },
+  "BRnp": {
+    "prefix": [
+      "BRnp",
+      "brnp"
+    ],
+    "body": "BRnp ${1:LABEL}",
+    "description": "Branch to LABEL when negative or positive. PC-relative range: -256 to 255 words."
+  },
+  "BRzp": {
+    "prefix": [
+      "BRzp",
+      "brzp"
+    ],
+    "body": "BRzp ${1:LABEL}",
+    "description": "Branch to LABEL when zero or positive. PC-relative range: -256 to 255 words."
+  },
+  "BRnzp": {
+    "prefix": [
+      "BRnzp",
+      "brnzp"
+    ],
+    "body": "BRnzp ${1:LABEL}",
+    "description": "Branch to LABEL when any condition code is set. PC-relative range: -256 to 255 words."
+  },
+  "JMP": {
+    "prefix": [
+      "JMP",
+      "jmp"
+    ],
+    "body": "JMP ${1:R0}",
+    "description": "JMP BaseR. Jump to the address in BaseR."
+  },
+  "JSR": {
+    "prefix": [
+      "JSR",
+      "jsr"
+    ],
+    "body": "JSR ${1:LABEL}",
+    "description": "JSR LABEL. Save return address in R7 and call LABEL, within -1024 to 1023 words."
+  },
+  "JSRR": {
+    "prefix": [
+      "JSRR",
+      "jsrr"
+    ],
+    "body": "JSRR ${1:R0}",
+    "description": "JSRR BaseR. Save return address in R7 and call address in BaseR."
+  },
+  "RET": {
+    "prefix": [
+      "RET",
+      "ret"
+    ],
+    "body": "RET",
+    "description": "RET No operands. Return to address in R7."
+  },
+  "RTI": {
+    "prefix": [
+      "RTI",
+      "rti"
+    ],
+    "body": "RTI",
+    "description": "RTI No operands. Return from interrupt, privileged instruction."
+  },
+  "TRAP": {
+    "prefix": [
+      "TRAP",
+      "trap"
+    ],
+    "body": "TRAP ${1:x25}",
+    "description": "TRAP trapvect8. Invoke an 8-bit trap vector, x00 to xFF; saves return address in R7."
+  },
+  "GETC": {
+    "prefix": [
+      "GETC",
+      "getc"
+    ],
+    "body": "GETC",
+    "description": "GETC No operands. Read a character into R0 without echo."
+  },
+  "OUT": {
+    "prefix": [
+      "OUT",
+      "out"
+    ],
+    "body": "OUT",
+    "description": "OUT No operands. Print the character in R0."
+  },
+  "PUTS": {
+    "prefix": [
+      "PUTS",
+      "puts"
+    ],
+    "body": "PUTS",
+    "description": "PUTS No operands. Print the null-terminated string whose address is in R0."
+  },
+  "IN": {
+    "prefix": [
+      "IN",
+      "in"
+    ],
+    "body": "IN",
+    "description": "IN No operands. Prompt for a character, echo it and store it in R0."
+  },
+  "PUTSP": {
+    "prefix": [
+      "PUTSP",
+      "putsp"
+    ],
+    "body": "PUTSP",
+    "description": "PUTSP No operands. Print packed characters from the address in R0."
+  },
+  "HALT": {
+    "prefix": [
+      "HALT",
+      "halt"
+    ],
+    "body": "HALT",
+    "description": "HALT No operands. Stop the program."
+  },
+  "CHAT": {
+    "prefix": [
+      "CHAT",
+      "chat"
+    ],
+    "body": "CHAT",
+    "description": "CHAT No operands. Minecraft chat: R0 holds the address of a null-terminated string."
+  },
+  "GETP": {
+    "prefix": [
+      "GETP",
+      "getp"
+    ],
+    "body": "GETP",
+    "description": "GETP No operands. Read player position into R0=x, R1=y, R2=z."
+  },
+  "SETP": {
+    "prefix": [
+      "SETP",
+      "setp"
+    ],
+    "body": "SETP",
+    "description": "SETP No operands. Move player to R0=x, R1=y, R2=z."
+  },
+  "GETB": {
+    "prefix": [
+      "GETB",
+      "getb"
+    ],
+    "body": "GETB",
+    "description": "GETB No operands. Read block at R0=x, R1=y, R2=z; return block ID in R3."
+  },
+  "SETB": {
+    "prefix": [
+      "SETB",
+      "setb"
+    ],
+    "body": "SETB",
+    "description": "SETB No operands. Set block at R0=x, R1=y, R2=z to block ID in R3."
+  },
+  "GETH": {
+    "prefix": [
+      "GETH",
+      "geth"
+    ],
+    "body": "GETH",
+    "description": "GETH No operands. Read highest block height at R0=x, R2=z; return y in R1."
+  },
+  "REG": {
+    "prefix": [
+      "REG",
+      "reg"
+    ],
+    "body": "REG",
+    "description": "REG No operands. Print register values to the terminal."
+  },
+  ".ORIG": {
+    "prefix": [
+      ".ORIG",
+      ".orig"
+    ],
+    "body": ".ORIG ${1:x3000}",
+    "description": ".ORIG address. Set the program starting address."
+  },
+  ".END": {
+    "prefix": [
+      ".END",
+      ".end"
+    ],
+    "body": ".END",
+    "description": ".END No operands. End assembly source."
+  },
+  ".FILL": {
+    "prefix": [
+      ".FILL",
+      ".fill"
+    ],
+    "body": ".FILL ${1:#0}",
+    "description": ".FILL value. Allocate one word initialized to value."
+  },
+  ".BLKW": {
+    "prefix": [
+      ".BLKW",
+      ".blkw"
+    ],
+    "body": ".BLKW ${1:#1}",
+    "description": ".BLKW count. Reserve count words of memory."
+  },
+  ".STRINGZ": {
+    "prefix": [
+      ".STRINGZ",
+      ".stringz"
+    ],
+    "body": ".STRINGZ \"${1:text}\"",
+    "description": ".STRINGZ \"text\". Store a string followed by a zero word."
+  },
+  "LC3 program": {
+    "prefix": [
+      "lc3"
+    ],
+    "body": [
+      ".ORIG ${1:x3000}",
+      "",
+      "    $0",
+      "    HALT",
+      "",
+      ".END"
+    ],
+    "description": "LC-3 program skeleton."
+  }
+}
