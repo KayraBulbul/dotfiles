@@ -9,7 +9,7 @@ LC-3 instruction snippets include operand placeholders and descriptions, includi
 Minecraft course commands such as `CHAT`, `GETP`, and `SETB`. Completion uses the
 configured snippet engine; no language server is required.
 
-Files ending in `.lc3`, and `.asm` files anywhere under a directory named `PS2`,
+Files ending in `.lc3`, and `.asm` files anywhere under a directory named `uni`,
 use LC-3 highlighting and formatting. For other assembly files, run `:set ft=lc3`.
 
 - In insert mode, use `Ctrl+Space` to open completion and its documentation.

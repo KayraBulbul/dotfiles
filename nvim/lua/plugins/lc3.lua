@@ -4,7 +4,7 @@ return {
     init = function()
       vim.filetype.add({
         extension = { lc3 = "lc3" },
-        pattern = { [".*/PS2/.*%.asm"] = "lc3" },
+        pattern = { [".*/uni/.*%.asm"] = "lc3" },
       })
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "lc3",
