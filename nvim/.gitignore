@@ -6,3 +6,6 @@ debug
 foo.*
 *.log
 data
+
+# Per-machine: Omarchy symlink on Linux, themes/omarchy-snapshot.lua on macOS
+lua/plugins/theme.lua

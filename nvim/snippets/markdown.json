@@ -1,15 +1,69 @@
 {
-  "Devlog frontmatter": {
+  "Portfolio devlog": {
     "prefix": "devlog",
+    "description": "Portfolio devlog with today's date and writing prompts",
     "body": [
       "---",
-      "title: ${1}",
+      "title: ${1:Project name - Devlog 1}",
       "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
-      "description: ${2}",
-      "tags: portfolio, devlog",
-      "published: true",
-      "---"
-    ],
-    "description": "Devlog frontmatter"
+      "description: ${2:A short summary of this update.}",
+      "tags: ${3:go, postgres}",
+      "published: ${4:false}",
+      "---",
+      "",
+      "## $1",
+      "",
+      "${5:What was the goal for this update?}",
+      "",
+      "## What I changed",
+      "",
+      "${6:Describe what you built or improved and why.}",
+      "",
+      "## What I learned",
+      "",
+      "${7:Explain a challenge, how you approached it, and what you learned.}",
+      "",
+      "## Next steps",
+      "",
+      "${8:What will you work on next?}",
+      "",
+      "$0"
+    ]
+  },
+  "Portfolio project": {
+    "prefix": "project",
+    "description": "Portfolio project metadata and writing prompts",
+    "body": [
+      "---",
+      "title: ${1:Project name}",
+      "description: ${2:A short archive and page-header description.}",
+      "technologies: ${3:TypeScript, React, PostgreSQL}",
+      "repositoryUrl: https://github.com/KayraBulbul/${4:repository-name}",
+      "liveUrl: ${5:https://example.com}",
+      "status: ${6:Active}",
+      "featured: ${7:false}",
+      "homepage: ${8:true}",
+      "published: ${9:false}",
+      "order: ${10:8}",
+      "---",
+      "",
+      "## What I built",
+      "",
+      "${11:Describe the project, who it is for, and the problem it solves.}",
+      "",
+      "## How it works",
+      "",
+      "${12:Explain the main components and how they fit together.}",
+      "",
+      "## What I learned",
+      "",
+      "${13:Describe a technical challenge and the choices you made.}",
+      "",
+      "## Next steps",
+      "",
+      "${14:Describe planned improvements, or remove this section if complete.}",
+      "",
+      "$0"
+    ]
   }
 }

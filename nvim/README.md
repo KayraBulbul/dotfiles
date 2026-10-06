@@ -1,23 +1,35 @@
-# 💤 LazyVim
+# Neovim
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+LazyVim config shared between Omarchy (Linux) and macOS. On both machines
+`~/.config/nvim` is a symlink to `~/dotfiles/nvim`.
 
-## LC-3 assembly
+## macOS setup
 
-LC-3 instruction snippets include operand placeholders and descriptions, including
-Minecraft course commands such as `CHAT`, `GETP`, and `SETB`. Completion uses the
-configured snippet engine; no language server is required.
+```sh
+git clone https://github.com/KayraBulbul/dotfiles.git ~/dotfiles
+~/dotfiles/nvim/setup-macos.sh
+```
 
-Files ending in `.lc3`, and `.asm` files anywhere under a directory named `uni`,
-use LC-3 highlighting and formatting. For other assembly files, run `:set ft=lc3`.
+The script installs the CLI tools via Homebrew, rustup, the plugins pinned in
+`lazy-lock.json`, and the same Mason tools as the Linux machine. Any existing
+nvim config/data is moved to `*.bak-<timestamp>`. Use a terminal with a Nerd
+Font (JetBrainsMono Nerd Font is installed).
 
-- In insert mode, use `Ctrl+Space` to open completion and its documentation.
-- Use `Ctrl+Y` to accept an instruction, then `Tab`/`Shift+Tab` between operands.
-- Use `<leader>cf` to format. The spacing formatter requires `python3` and preserves
-  operands, strings, comments, and Minecraft instructions. Existing autoformat
-  settings still apply.
+## Theme
 
-On another machine, pull this repository and copy or symlink its `nvim` directory
-into `~/.config/nvim`, preserving any machine-specific configuration you need.
-Restart Neovim after syncing.
+`lua/plugins/theme.lua` is per-machine and not tracked:
+
+- **Linux:** Omarchy's symlink to `~/.local/state/omarchy/current/theme/neovim.lua`,
+  so `omarchy-theme-set` hot-reloads nvim.
+- **macOS:** a symlink to `themes/omarchy-snapshot.lua`.
+
+To carry a new Omarchy theme over to the Mac:
+
+```sh
+cp ~/.local/state/omarchy/current/theme/neovim.lua ~/dotfiles/nvim/themes/omarchy-snapshot.lua
+```
+
+## Syncing
+
+Commit and push from either machine, `git pull` on the other, then run
+`:Lazy restore` so plugins match `lazy-lock.json`.
